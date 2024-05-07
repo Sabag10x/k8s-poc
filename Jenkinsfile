@@ -99,5 +99,12 @@ pipeline {
             }
         }
         
+        stage ('eks-deployment'){
+            steps {
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'k8spoc', contextName: '', credentialsId: 'kube-id', namespace: 'webapps', serverUrl: 'https://B519352EA84C7E41F780ACAD7AEBF5E2.gr7.us-east-2.eks.amazonaws.com']]) {
+                        sh "kubectl apply -f deployment-service.yaml"
+                }
+            }
+        }
     }
 }
