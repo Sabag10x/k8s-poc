@@ -74,7 +74,7 @@ pipeline {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                            sh 'docker build -t sabag10x/k8-spoc:latest .'
+                            sh 'docker build -t sabag10x/k8-spoc:v2 .'
                     }
                 }
             }
@@ -91,7 +91,7 @@ pipeline {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                            sh 'docker push sabag10x/k8-spoc:latest'
+                            sh 'docker push sabag10x/k8-spoc:v2'
                     }
                 }
             }
